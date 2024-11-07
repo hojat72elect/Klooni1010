@@ -66,14 +66,14 @@ public class Cell implements BinSerializable {
     //region Serialization
 
     @Override
-    public void write(DataOutputStream out) throws IOException {
+    public void write(DataOutputStream outputStream) throws IOException {
         // Only the color index is saved
-        out.writeInt(colorIndex);
+        outputStream.writeInt(colorIndex);
     }
 
     @Override
-    public void read(DataInputStream in) throws IOException {
-        colorIndex = in.readInt();
+    public void read(DataInputStream inputStream) throws IOException {
+        colorIndex = inputStream.readInt();
     }
 
     

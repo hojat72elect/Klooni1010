@@ -40,16 +40,16 @@ public class Scorer extends BaseScorer implements BinSerializable {
     //region Serialization
 
     @Override
-    public void write(DataOutputStream out) throws IOException {
+    public void write(DataOutputStream outputStream) throws IOException {
         // currentScore, highScore
-        out.writeInt(currentScore);
-        out.writeInt(highScore);
+        outputStream.writeInt(currentScore);
+        outputStream.writeInt(highScore);
     }
 
     @Override
-    public void read(DataInputStream in) throws IOException {
-        currentScore = in.readInt();
-        highScore = in.readInt();
+    public void read(DataInputStream inputStream) throws IOException {
+        currentScore = inputStream.readInt();
+        highScore = inputStream.readInt();
     }
 
     

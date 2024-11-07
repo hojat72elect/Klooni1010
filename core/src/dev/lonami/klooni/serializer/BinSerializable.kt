@@ -1,11 +1,14 @@
-package dev.lonami.klooni.serializer;
+package dev.lonami.klooni.serializer
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
+import java.io.DataInputStream
+import java.io.DataOutputStream
+import java.io.IOException
 
-public interface BinSerializable {
-    void write(final DataOutputStream out) throws IOException;
+interface BinSerializable {
 
-    void read(final DataInputStream in) throws IOException;
+    @Throws(IOException::class)
+    fun write(outputStream: DataOutputStream)
+
+    @Throws(IOException::class)
+    fun read(inputStream: DataInputStream)
 }
