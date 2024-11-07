@@ -1,25 +1,7 @@
-/*
-    1010! Klooni, a free customizable puzzle game for Android and Desktop
-    Copyright (C) 2017-2019  Lonami Exo @ lonami.dev
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
 package dev.lonami.klooni.actors;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
-
 import dev.lonami.klooni.Klooni;
 import dev.lonami.klooni.Theme;
 import dev.lonami.klooni.game.Cell;
@@ -28,19 +10,14 @@ import dev.lonami.klooni.game.GameLayout;
 // Card-like actor used to display information about a given theme
 public class ThemeCard extends ShopCard {
 
-    //region Members
-
-    private final Theme theme;
-    private final Texture background;
 
     private final static int[][] colorsUsed = {
             {0, 7, 7},
             {8, 7, 3},
             {8, 8, 3}
     };
-
-    //endregion
-
+    private final Theme theme;
+    private final Texture background;
     //region Constructor
 
     public ThemeCard(final Klooni game, final GameLayout layout, final Theme theme) {
@@ -50,9 +27,6 @@ public class ThemeCard extends ShopCard {
         this.theme = theme;
         usedItemUpdated();
     }
-
-    //endregion
-
     //region Public methods
 
     @Override
@@ -66,7 +40,8 @@ public class ThemeCard extends ShopCard {
         for (int i = 0; i < colorsUsed.length; ++i) {
             for (int j = 0; j < colorsUsed[i].length; ++j) {
                 Cell.draw(theme.cellTexture, theme.getCellColor(colorsUsed[i][j]), batch,
-                        x + cellSize * (j + 1), y + cellSize * (i + 1), cellSize);
+                        x + cellSize * (j + 1), y + cellSize * (i + 1), cellSize
+                );
             }
         }
 
@@ -111,5 +86,5 @@ public class ThemeCard extends ShopCard {
         }
     }
 
-    //endregion
+    
 }

@@ -1,20 +1,3 @@
-/*
-    1010! Klooni, a free customizable puzzle game for Android and Desktop
-    Copyright (C) 2017-2019  Lonami Exo @ lonami.dev
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
 package dev.lonami.klooni.actors;
 
 import com.badlogic.gdx.graphics.Texture;
@@ -24,7 +7,6 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.utils.Align;
-
 import dev.lonami.klooni.Klooni;
 import dev.lonami.klooni.Theme;
 import dev.lonami.klooni.game.BaseScorer;
@@ -33,20 +15,12 @@ import dev.lonami.klooni.game.GameLayout;
 // Horizontal band, used to show the score on the pause menu
 public class Band extends Actor {
 
-    //region Members
-
-    private final BaseScorer scorer;
-    private final Texture bandTexture;
-
     public final Rectangle scoreBounds;
     public final Rectangle infoBounds;
-
+    private final BaseScorer scorer;
+    private final Texture bandTexture;
     private final Label infoLabel;
     private final Label scoreLabel;
-
-    //endregion
-
-    //region Constructor
 
     public Band(final Klooni game, final GameLayout layout, final BaseScorer scorer) {
         this.scorer = scorer;
@@ -64,10 +38,6 @@ public class Band extends Actor {
         infoBounds = new Rectangle();
         layout.update(this);
     }
-
-    //endregion
-
-    //region Public methods
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
@@ -96,5 +66,4 @@ public class Band extends Actor {
             infoLabel.setText(message);
     }
 
-    //endregion
 }

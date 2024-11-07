@@ -1,20 +1,3 @@
-/*
-    1010! Klooni, a free customizable puzzle game for Android and Desktop
-    Copyright (C) 2017-2019  Lonami Exo @ lonami.dev
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
 package dev.lonami.klooni.screens;
 
 import com.badlogic.gdx.Gdx;
@@ -30,7 +13,6 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.actions.RunnableAction;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
-
 import dev.lonami.klooni.Klooni;
 import dev.lonami.klooni.actors.Band;
 import dev.lonami.klooni.actors.SoftButton;
@@ -41,23 +23,31 @@ import dev.lonami.klooni.game.GameLayout;
 // which can be overlaid on top of another screen
 class PauseMenuStage extends Stage {
 
-    //region Members
-
-    private InputProcessor lastInputProcessor;
-    private boolean shown;
-    private boolean hiding;
 
     private final ShapeRenderer shapeRenderer;
-
     private final Klooni game;
     private final Band band;
     private final BaseScorer scorer;
     private final SoftButton playButton;
     private final SoftButton customButton; // Customize & "Shut down"
-
-    //endregion
-
+    private final ChangeListener customChangeListener = new ChangeListener() {
+        @Override
+        public void changed(ChangeEvent event, Actor actor) {
+            // Don't dispose because then it needs to take us to the previous screen
+            game.transitionTo(new CustomizeScreen(game, game.getScreen()), false);
+        }
+    };
+    private InputProcessor lastInputProcessor;
+    private boolean shown;
     //region Constructor
+    private boolean hiding;
+    //region Private methods
+    private final ChangeListener playChangeListener = new ChangeListener() {
+        @Override
+        public void changed(ChangeEvent event, Actor actor) {
+            hide();
+        }
+    };
 
     // We need the score to save the maximum score if a new record was beaten
     PauseMenuStage(final GameLayout layout, final Klooni game, final BaseScorer scorer, final int gameMode) {
@@ -110,10 +100,6 @@ class PauseMenuStage extends Stage {
         playButton.addListener(playChangeListener);
     }
 
-    //endregion
-
-    //region Private methods
-
     // Hides the pause menu, setting back the previous input processor
     private void hide() {
         shown = false;
@@ -131,24 +117,6 @@ class PauseMenuStage extends Stage {
         ));
         scorer.resume();
     }
-
-    private final ChangeListener customChangeListener = new ChangeListener() {
-        @Override
-        public void changed(ChangeEvent event, Actor actor) {
-            // Don't dispose because then it needs to take us to the previous screen
-            game.transitionTo(new CustomizeScreen(game, game.getScreen()), false);
-        }
-    };
-
-    private final ChangeListener playChangeListener = new ChangeListener() {
-        @Override
-        public void changed(ChangeEvent event, Actor actor) {
-            hide();
-        }
-    };
-
-    //endregion
-
     //region Package local methods
 
     // Shows the pause menu, indicating whether it's game over or not
@@ -200,9 +168,6 @@ class PauseMenuStage extends Stage {
     boolean isHiding() {
         return hiding;
     }
-
-    //endregion
-
     //region Public methods
 
     @Override
@@ -230,5 +195,5 @@ class PauseMenuStage extends Stage {
         return super.keyUp(keyCode);
     }
 
-    //endregion
+    
 }

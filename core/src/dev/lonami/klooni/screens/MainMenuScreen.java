@@ -1,20 +1,3 @@
-/*
-    1010! Klooni, a free customizable puzzle game for Android and Desktop
-    Copyright (C) 2017-2019  Lonami Exo @ lonami.dev
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
 package dev.lonami.klooni.screens;
 
 import com.badlogic.gdx.Gdx;
@@ -26,27 +9,18 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
-
 import dev.lonami.klooni.Klooni;
 import dev.lonami.klooni.actors.SoftButton;
 
 // Main menu screen, presenting some options (play, customize…)
 public class MainMenuScreen extends InputListener implements Screen {
 
-    //region Members
-
-    private final Klooni game;
-    private final Stage stage;
-
-    //endregion
-
-    //region Static members
 
     // As the examples show on the LibGdx wiki
     private static final float minDelta = 1 / 30f;
-
-    //endregion
-
+    private final Klooni game;
+    //region Static members
+    private final Stage stage;
     //region Constructor
 
     public MainMenuScreen(Klooni game) {
@@ -103,10 +77,7 @@ public class MainMenuScreen extends InputListener implements Screen {
         });
         table.add(paletteButton).space(16);
     }
-
-    //endregion
-
-    //region Screen
+    
 
     @Override
     public void show() {
@@ -134,9 +105,6 @@ public class MainMenuScreen extends InputListener implements Screen {
     public void dispose() {
         stage.dispose();
     }
-
-    //endregion
-
     //region Unused methods
 
     @Override
@@ -151,5 +119,5 @@ public class MainMenuScreen extends InputListener implements Screen {
     public void hide() {
     }
 
-    //endregion
+    
 }

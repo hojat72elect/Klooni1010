@@ -1,26 +1,8 @@
-/*
-    1010! Klooni, a free customizable puzzle game for Android and Desktop
-    Copyright (C) 2017-2019  Lonami Exo @ lonami.dev
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
 package dev.lonami.klooni.actors;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Rectangle;
-
 import dev.lonami.klooni.Klooni;
 import dev.lonami.klooni.Theme;
 import dev.lonami.klooni.game.Board;
@@ -31,19 +13,11 @@ import dev.lonami.klooni.interfaces.IEffectFactory;
 // Card-like actor used to display information about a given theme
 public class EffectCard extends ShopCard {
 
-    //region Members
-
     private final IEffectFactory effect;
     private final Board board;
-
+    private final Texture background;
     // We want to create an effect from the beginning
     private boolean needCreateEffect = true;
-
-    private final Texture background;
-
-    //endregion
-
-    //region Constructor
 
     public EffectCard(final Klooni game, final GameLayout layout, final IEffectFactory effect) {
         super(game, layout, effect.getDisplay(), Klooni.theme.background);
@@ -70,10 +44,6 @@ public class EffectCard extends ShopCard {
                 break; // Should not fail, but if it does, don't break
         }
     }
-
-    //endregion
-
-    //region Public methods
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
@@ -154,5 +124,5 @@ public class EffectCard extends ShopCard {
         }
     }
 
-    //endregion
+    
 }

@@ -1,20 +1,3 @@
-/*
-    1010! Klooni, a free customizable puzzle game for Android and Desktop
-    Copyright (C) 2017-2019  Lonami Exo @ lonami.dev
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
 package dev.lonami.klooni.game;
 
 import com.badlogic.gdx.graphics.Color;
@@ -25,30 +8,21 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.utils.Align;
-
 import dev.lonami.klooni.Klooni;
 import dev.lonami.klooni.SkinLoader;
 import dev.lonami.klooni.serializer.BinSerializable;
 
 public abstract class BaseScorer implements BinSerializable {
 
-    //region Members
-
-    int currentScore;
 
     final Label currentScoreLabel;
     final Label highScoreLabel;
-
     final Texture cupTexture;
     final Rectangle cupArea;
-
     private final Color cupColor;
-
+    int currentScore;
     // To interpolate between shown score -> real score
     private float shownScore;
-
-    //endregion
-
     //region Constructor
 
     // The board size is required when calculating the score
@@ -67,9 +41,6 @@ public abstract class BaseScorer implements BinSerializable {
 
         layout.update(this);
     }
-
-    //endregion
-
     //region Private methods
 
     // The original game seems to work as follows:
@@ -81,9 +52,6 @@ public abstract class BaseScorer implements BinSerializable {
         if (stripsCleared == 1) return boardSize;
         else return boardSize * stripsCleared + calculateClearScore(stripsCleared - 1, boardSize);
     }
-
-    //endregion
-
     //region Public methods
 
     // Adds the score a given piece would give
@@ -137,5 +105,5 @@ public abstract class BaseScorer implements BinSerializable {
         highScoreLabel.draw(batch, 1f);
     }
 
-    //endregion
+    
 }
