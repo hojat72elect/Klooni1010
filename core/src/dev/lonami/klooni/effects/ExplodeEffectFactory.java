@@ -29,13 +29,13 @@ public class ExplodeEffectFactory implements IEffectFactory {
 
     @Override
     public IEffect create(Cell deadCell, Vector2 culprit) {
-        IEffect effect = new ExplodeEffect();
+        IEffect effect = new dev.lonami.klooni.effects.ExplodeEffectFactory.ExplodeEffect();
         effect.setInfo(deadCell, culprit);
         return effect;
     }
 
 
-    private class ExplodeEffect implements IEffect {
+    private static class ExplodeEffect implements IEffect {
         private final static float EXPLOSION_X_RANGE = 0.25f;
         private final static float EXPLOSION_Y_RANGE = 0.30f;
         private final static float GRAVITY_PERCENTAGE = -0.60f;
