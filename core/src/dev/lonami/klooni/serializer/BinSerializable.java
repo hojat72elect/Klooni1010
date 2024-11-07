@@ -1,4 +1,3 @@
-
 package dev.lonami.klooni.serializer;
 
 import java.io.DataInputStream;

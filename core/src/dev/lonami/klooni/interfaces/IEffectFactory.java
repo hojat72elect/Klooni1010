@@ -1,4 +1,3 @@
-
 package dev.lonami.klooni.interfaces;
 
 import com.badlogic.gdx.math.Vector2;

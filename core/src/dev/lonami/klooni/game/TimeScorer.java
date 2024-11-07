@@ -1,4 +1,3 @@
-
 package dev.lonami.klooni.game;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -14,7 +13,6 @@ import java.io.IOException;
 
 public class TimeScorer extends BaseScorer implements BinSerializable {
 
-    //region Members
 
     private static final long START_TIME = 30 * 1000000000L;
     // 2 seconds every 10 points: (2/10)*10^9 to get the nanoseconds
@@ -23,9 +21,6 @@ public class TimeScorer extends BaseScorer implements BinSerializable {
     private final Label timeLeftLabel;
     private long startTime;
     private int highScore;
-
-    //endregion
-
     //region Static variables
     // Indicates where we would die in time. Score adds to this, so we take
     // longer to die. To get the "score" we simply calculate `deadTime - startTime`
@@ -33,9 +28,6 @@ public class TimeScorer extends BaseScorer implements BinSerializable {
     // We need to know when the game was paused to "stop" counting
     private long pauseTime;
     private int pausedTimeLeft;
-
-    //endregion
-
     //region Constructor
 
     // The board size is required when calculating the score
@@ -54,9 +46,6 @@ public class TimeScorer extends BaseScorer implements BinSerializable {
 
         pausedTimeLeft = -1;
     }
-
-    //endregion
-
     //region Private methods
 
     private int nanosToSeconds(long nano) {
@@ -70,9 +59,6 @@ public class TimeScorer extends BaseScorer implements BinSerializable {
     private int getTimeLeft() {
         return Math.max(nanosToSeconds(deadTime - TimeUtils.nanoTime()), 0);
     }
-
-    //endregion
-
     //region Public methods
 
     @Override
@@ -134,9 +120,6 @@ public class TimeScorer extends BaseScorer implements BinSerializable {
         timeLeftLabel.setColor(Klooni.theme.currentScore);
         timeLeftLabel.draw(batch, 1f);
     }
-
-    //endregion
-
     //region Serialization
 
     @Override
@@ -155,5 +138,5 @@ public class TimeScorer extends BaseScorer implements BinSerializable {
         highScore = in.readInt();
     }
 
-    //endregion
+    
 }

@@ -1,4 +1,3 @@
-
 package dev.lonami.klooni.effects;
 
 import com.badlogic.gdx.Gdx;

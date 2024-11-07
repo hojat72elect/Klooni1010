@@ -1,4 +1,3 @@
-
 package dev.lonami.klooni.game;
 
 import com.badlogic.gdx.graphics.Color;
@@ -15,7 +14,6 @@ import dev.lonami.klooni.serializer.BinSerializable;
 
 public abstract class BaseScorer implements BinSerializable {
 
-    //region Members
 
     final Label currentScoreLabel;
     final Label highScoreLabel;
@@ -25,9 +23,6 @@ public abstract class BaseScorer implements BinSerializable {
     int currentScore;
     // To interpolate between shown score -> real score
     private float shownScore;
-
-    //endregion
-
     //region Constructor
 
     // The board size is required when calculating the score
@@ -46,9 +41,6 @@ public abstract class BaseScorer implements BinSerializable {
 
         layout.update(this);
     }
-
-    //endregion
-
     //region Private methods
 
     // The original game seems to work as follows:
@@ -60,9 +52,6 @@ public abstract class BaseScorer implements BinSerializable {
         if (stripsCleared == 1) return boardSize;
         else return boardSize * stripsCleared + calculateClearScore(stripsCleared - 1, boardSize);
     }
-
-    //endregion
-
     //region Public methods
 
     // Adds the score a given piece would give
@@ -116,5 +105,5 @@ public abstract class BaseScorer implements BinSerializable {
         highScoreLabel.draw(batch, 1f);
     }
 
-    //endregion
+    
 }

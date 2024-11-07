@@ -1,4 +1,3 @@
-
 package dev.lonami.klooni.actors;
 
 import com.badlogic.gdx.graphics.Texture;
@@ -11,7 +10,6 @@ import dev.lonami.klooni.game.GameLayout;
 // Card-like actor used to display information about a given theme
 public class ThemeCard extends ShopCard {
 
-    //region Members
 
     private final static int[][] colorsUsed = {
             {0, 7, 7},
@@ -20,9 +18,6 @@ public class ThemeCard extends ShopCard {
     };
     private final Theme theme;
     private final Texture background;
-
-    //endregion
-
     //region Constructor
 
     public ThemeCard(final Klooni game, final GameLayout layout, final Theme theme) {
@@ -32,9 +27,6 @@ public class ThemeCard extends ShopCard {
         this.theme = theme;
         usedItemUpdated();
     }
-
-    //endregion
-
     //region Public methods
 
     @Override
@@ -94,5 +86,5 @@ public class ThemeCard extends ShopCard {
         }
     }
 
-    //endregion
+    
 }

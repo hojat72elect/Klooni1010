@@ -15,18 +15,12 @@ import dev.lonami.klooni.game.GameLayout;
 // Horizontal band, used to show the score on the pause menu
 public class Band extends Actor {
 
-    //region Members
-
     public final Rectangle scoreBounds;
     public final Rectangle infoBounds;
     private final BaseScorer scorer;
     private final Texture bandTexture;
     private final Label infoLabel;
     private final Label scoreLabel;
-
-    //endregion
-
-    //region Constructor
 
     public Band(final Klooni game, final GameLayout layout, final BaseScorer scorer) {
         this.scorer = scorer;
@@ -44,10 +38,6 @@ public class Band extends Actor {
         infoBounds = new Rectangle();
         layout.update(this);
     }
-
-    //endregion
-
-    //region Public methods
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
@@ -76,5 +66,4 @@ public class Band extends Actor {
             infoLabel.setText(message);
     }
 
-    //endregion
 }

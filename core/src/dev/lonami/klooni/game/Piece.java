@@ -1,4 +1,3 @@
-
 package dev.lonami.klooni.game;
 
 import com.badlogic.gdx.graphics.Color;
@@ -16,7 +15,6 @@ import java.io.IOException;
 // with any rotation.
 public class Piece {
 
-    //region Members
 
     public final int colorIndex;
     public final int cellCols, cellRows;
@@ -26,9 +24,6 @@ public class Piece {
 
     // Default arbitrary value
     float cellSize = 10f;
-
-    //endregion
-
     //region Constructors
 
     // Rectangle-shaped constructor
@@ -88,9 +83,6 @@ public class Piece {
                 break;
         }
     }
-
-    //endregion
-
     //region Static methods
 
     // Generates a random piece with always the same color for the generated shape
@@ -127,9 +119,6 @@ public class Piece {
         }
         throw new RuntimeException("Random function is broken.");
     }
-
-    //endregion
-
     //region Package local methods
 
     static Piece read(DataInputStream in) throws IOException {
@@ -166,9 +155,6 @@ public class Piece {
         }
         return area;
     }
-
-    //endregion
-
     //region Serialization
 
     // Calculates the gravity center of the piece shape
@@ -195,5 +181,5 @@ public class Piece {
         out.writeInt(rotation);
     }
 
-    //endregion
+    
 }

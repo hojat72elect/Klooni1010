@@ -1,4 +1,3 @@
-
 package dev.lonami.klooni.game;
 
 import com.badlogic.gdx.graphics.g2d.Batch;

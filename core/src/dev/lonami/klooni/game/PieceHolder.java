@@ -1,4 +1,3 @@
-
 package dev.lonami.klooni.game;
 
 import com.badlogic.gdx.Gdx;
@@ -19,7 +18,6 @@ import java.io.IOException;
 // Pieces can be picked up from it and dropped on a board.
 public class PieceHolder implements BinSerializable {
 
-    //region Members
 
     private static final float DRAG_SPEED = 0.5f; // Interpolation value ((pos -> new) / frame)
     final Rectangle area;
@@ -36,15 +34,9 @@ public class PieceHolder implements BinSerializable {
     // Every piece holder belongs to a specific board
     private final Board board;
     public boolean enabled;
-
-    //endregion
-
     //region Static members
     // Currently held piece index (picked by the user)
     private int heldPiece;
-
-    //endregion
-
     //region Constructor
 
     public PieceHolder(final GameLayout layout, final Board board,
@@ -70,9 +62,6 @@ public class PieceHolder implements BinSerializable {
         // TODO So, how would pieces handle a layout update?
         takeMore();
     }
-
-    //endregion
-
     //region Private methods
 
     // Determines whether all the pieces have been put (and the "hand" is finished)
@@ -128,9 +117,6 @@ public class PieceHolder implements BinSerializable {
             piece.cellSize = 0f;
         }
     }
-
-    //endregion
-
     //region Public methods
 
     // Picks the piece below the finger/mouse, returning true if any was picked
@@ -260,9 +246,6 @@ public class PieceHolder implements BinSerializable {
             }
         }
     }
-
-    //endregion
-
     //region Serialization
 
     @Override
@@ -291,9 +274,6 @@ public class PieceHolder implements BinSerializable {
             pieces[i] = in.readBoolean() ? Piece.read(in) : null;
         updatePiecesStartLocation();
     }
-
-    //endregion
-
     //region Sub-classes
 
     public class DropResult {
@@ -318,5 +298,5 @@ public class PieceHolder implements BinSerializable {
         }
     }
 
-    //endregion
+    
 }

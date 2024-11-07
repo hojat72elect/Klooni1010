@@ -1,4 +1,3 @@
-
 package dev.lonami.klooni.game;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
@@ -17,7 +16,6 @@ import java.io.IOException;
 // and functions to determine when it is game over given a PieceHolder
 public class Board implements BinSerializable {
 
-    //region Members
 
     public final int cellCount;
     public final Vector2 pos = new Vector2();
@@ -26,9 +24,6 @@ public class Board implements BinSerializable {
     private final Vector2 lastPutPiecePos = new Vector2();
     public float cellSize;
     private Cell[][] cells;
-
-    //endregion
-
     //region Constructor
 
     public Board(final GameLayout layout, int cellCount) {
@@ -56,9 +51,6 @@ public class Board implements BinSerializable {
             }
         }
     }
-
-    //endregion
-
     //region Private methods
 
     // True if the given cell coordinates are inside the bounds of the board
@@ -97,10 +89,6 @@ public class Board implements BinSerializable {
 
         return true;
     }
-
-    //endregion
-
-    //region Public methods
 
     public void draw(final Batch batch) {
         batch.setTransformMatrix(batch.getTransformMatrix().translate(pos.x, pos.y, 0));
@@ -231,9 +219,6 @@ public class Board implements BinSerializable {
     public boolean effectsDone() {
         return effects.size == 0;
     }
-
-    //endregion
-
     //region Serialization
 
     @Override
@@ -258,5 +243,5 @@ public class Board implements BinSerializable {
                 cells[i][j].read(in);
     }
 
-    //endregion
+    
 }

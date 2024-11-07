@@ -1,4 +1,3 @@
-
 package dev.lonami.klooni.screens;
 
 
@@ -30,7 +29,6 @@ import dev.lonami.klooni.interfaces.IEffectFactory;
 // Screen where the user can customize the look and feel of the game
 class CustomizeScreen implements Screen {
 
-    //region Members
 
     // As the examples show on the LibGdx wiki
     private static final float MIN_DELTA = 1 / 30f;
@@ -44,15 +42,9 @@ class CustomizeScreen implements Screen {
     private final ScrollPane shopScroll;
     private final MoneyBuyBand buyBand;
     private boolean showingEffectsShop;
-
-    //endregion
-
     //region Static members
     private int showcaseIndex;
     private float shopDragStartX, shopDragStartY;
-
-    //endregion
-
     //region Constructor
 
     CustomizeScreen(Klooni game, final Screen lastScreen) {
@@ -162,9 +154,6 @@ class CustomizeScreen implements Screen {
         table.row();
         table.add(buyBand).expandX().fillX();
     }
-
-    //endregion
-
     //region Private methods
 
     private void goBack() {
@@ -234,9 +223,6 @@ class CustomizeScreen implements Screen {
 
         shopGroup.addActor(card);
     }
-
-    //endregion
-
     //region Public methods
 
     @Override
@@ -284,9 +270,6 @@ class CustomizeScreen implements Screen {
     public void dispose() {
         stage.dispose();
     }
-
-    //endregion
-
     //region Empty methods
 
     @Override
@@ -301,5 +284,5 @@ class CustomizeScreen implements Screen {
     public void hide() {
     }
 
-    //endregion
+    
 }

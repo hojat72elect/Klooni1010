@@ -1,4 +1,3 @@
-
 package dev.lonami.klooni.screens;
 
 import com.badlogic.gdx.Gdx;
@@ -24,7 +23,6 @@ import dev.lonami.klooni.game.GameLayout;
 // which can be overlaid on top of another screen
 class PauseMenuStage extends Stage {
 
-    //region Members
 
     private final ShapeRenderer shapeRenderer;
     private final Klooni game;
@@ -41,14 +39,8 @@ class PauseMenuStage extends Stage {
     };
     private InputProcessor lastInputProcessor;
     private boolean shown;
-
-    //endregion
-
     //region Constructor
     private boolean hiding;
-
-    //endregion
-
     //region Private methods
     private final ChangeListener playChangeListener = new ChangeListener() {
         @Override
@@ -125,9 +117,6 @@ class PauseMenuStage extends Stage {
         ));
         scorer.resume();
     }
-
-    //endregion
-
     //region Package local methods
 
     // Shows the pause menu, indicating whether it's game over or not
@@ -179,9 +168,6 @@ class PauseMenuStage extends Stage {
     boolean isHiding() {
         return hiding;
     }
-
-    //endregion
-
     //region Public methods
 
     @Override
@@ -209,5 +195,5 @@ class PauseMenuStage extends Stage {
         return super.keyUp(keyCode);
     }
 
-    //endregion
+    
 }

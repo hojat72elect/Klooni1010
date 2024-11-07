@@ -1,4 +1,3 @@
-
 package dev.lonami.klooni;
 
 import com.badlogic.gdx.Gdx;

@@ -1,4 +1,3 @@
-
 package dev.lonami.klooni.screens;
 
 
@@ -13,7 +12,6 @@ import dev.lonami.klooni.Klooni;
 // Screen where the user can customize the look and feel of the game
 class ShareScoreScreen implements Screen {
 
-    //region Members
 
     private final Klooni game;
     private final Label infoLabel;
@@ -23,9 +21,6 @@ class ShareScoreScreen implements Screen {
     private final boolean timeMode;
 
     private final Screen lastScreen;
-
-    //endregion
-
     //region Constructor
 
     ShareScoreScreen(final Klooni game, final Screen lastScreen,
@@ -51,17 +46,11 @@ class ShareScoreScreen implements Screen {
 
         spriteBatch = new SpriteBatch();
     }
-
-    //endregion
-
     //region Private methods
 
     private void goBack() {
         game.transitionTo(lastScreen);
     }
-
-    //endregion
-
     //region Public methods
 
     @Override
@@ -80,9 +69,6 @@ class ShareScoreScreen implements Screen {
         infoLabel.draw(spriteBatch, 1);
         spriteBatch.end();
     }
-
-    //endregion
-
     //region Empty methods
 
     @Override
@@ -105,5 +91,5 @@ class ShareScoreScreen implements Screen {
     public void hide() {
     }
 
-    //endregion
+    
 }

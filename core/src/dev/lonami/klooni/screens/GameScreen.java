@@ -1,4 +1,3 @@
-
 package dev.lonami.klooni.screens;
 
 import com.badlogic.gdx.Gdx;
@@ -27,7 +26,6 @@ import java.io.IOException;
 // Main game screen. Here the board, piece holder and score are shown
 class GameScreen implements Screen, InputProcessor, BinSerializable {
 
-    //region Members
 
     final static int GAME_MODE_SCORE = 0;
     final static int GAME_MODE_TIME = 1;
@@ -40,9 +38,6 @@ class GameScreen implements Screen, InputProcessor, BinSerializable {
     private final Board board;
     private final PieceHolder holder;
     private final SpriteBatch batch;
-
-    //endregion
-
     //region Static members
     private final Sound gameOverSound;
     private final PauseMenuStage pauseMenu;
@@ -55,9 +50,6 @@ class GameScreen implements Screen, InputProcessor, BinSerializable {
     // but rather subtract it from the current score and then update it
     // with the current score to get the "increase" of money score.
     private int savedMoneyScore;
-
-    //endregion
-
     //region Constructor
 
     // Load any previously saved file by default
@@ -101,9 +93,6 @@ class GameScreen implements Screen, InputProcessor, BinSerializable {
             }
         }
     }
-
-    //endregion
-
     //region Private methods
 
     private static void deleteSave() {
@@ -115,10 +104,7 @@ class GameScreen implements Screen, InputProcessor, BinSerializable {
     static boolean hasSavedData() {
         return Gdx.files.local(SAVE_DAT_FILENAME).exists();
     }
-
-    //endregion
-
-    //region Screen
+    
 
     // If no piece can be put, then it is considered to be game over
     private boolean isGameOver() {
@@ -164,9 +150,6 @@ class GameScreen implements Screen, InputProcessor, BinSerializable {
     public void pause() {
         save();
     }
-
-    //endregion
-
     //region Input
 
     @Override
@@ -208,9 +191,6 @@ class GameScreen implements Screen, InputProcessor, BinSerializable {
 
         return false;
     }
-
-    //endregion
-
     //region Unused methods
 
     @Override
@@ -267,9 +247,6 @@ class GameScreen implements Screen, InputProcessor, BinSerializable {
     public boolean touchDragged(int screenX, int screenY, int pointer) {
         return false;
     }
-
-    //endregion
-
     //region Saving and loading
 
     @Override
@@ -344,5 +321,5 @@ class GameScreen implements Screen, InputProcessor, BinSerializable {
         scorer.read(in);
     }
 
-    //endregion
+    
 }

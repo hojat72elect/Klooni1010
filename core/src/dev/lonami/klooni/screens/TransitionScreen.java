@@ -1,4 +1,3 @@
-
 package dev.lonami.klooni.screens;
 
 import com.badlogic.gdx.Gdx;
@@ -12,7 +11,6 @@ import dev.lonami.klooni.Klooni;
 
 public class TransitionScreen implements Screen {
 
-    //region Members
 
     // Time it takes to fade out and in, 0.15s (0.3s total)
     private static final float FADE_INVERSE_DELAY = 1f / 0.15f;
@@ -28,14 +26,8 @@ public class TransitionScreen implements Screen {
     private TextureRegion bufferTexture;
     private float fadedElapsed;
     private boolean fadingOut;
-
-    //endregion
-
     //region Static variables
     private int width, height;
-
-    //endregion
-
     //region Constructor
 
     public TransitionScreen(Klooni game, Screen from, Screen to, boolean disposeAfter) {
@@ -46,9 +38,6 @@ public class TransitionScreen implements Screen {
 
         spriteBatch = new SpriteBatch();
     }
-
-    //endregion
-
     //region Rendering
 
     @Override
@@ -108,9 +97,6 @@ public class TransitionScreen implements Screen {
         bufferTexture = new TextureRegion(frameBuffer.getColorBufferTexture());
         bufferTexture.flip(false, true);
     }
-
-    //endregion
-
     //region Disposing
 
     @Override
@@ -119,9 +105,6 @@ public class TransitionScreen implements Screen {
         if (disposeAfter)
             fromScreen.dispose();
     }
-
-    //endregion
-
     //region Unused methods
 
     @Override
@@ -136,5 +119,5 @@ public class TransitionScreen implements Screen {
     public void hide() {
     }
 
-    //endregion
+    
 }

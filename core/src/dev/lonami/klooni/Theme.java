@@ -1,4 +1,3 @@
-
 package dev.lonami.klooni;
 
 import com.badlogic.gdx.Gdx;
@@ -17,7 +16,6 @@ import com.badlogic.gdx.utils.JsonValue;
 // can be easily added
 public class Theme {
 
-    //region Members
 
     // Used to determine the best foreground color (black or white) given a background color
     // Formula took from http://alienryderflex.com/hsp.html
@@ -38,14 +36,8 @@ public class Theme {
     private String name;
     private int price;
     private Color emptyCell;
-
-    //endregion
-
     //region Constructor
     private Color[] cells;
-
-    //endregion
-
     //region Static methods
 
     private Theme() {
@@ -91,9 +83,6 @@ public class Theme {
 
         return brightness < BRIGHTNESS_CUTOFF;
     }
-
-    //endregion
-
     //region Theme updating
 
     // A 1x1 blank pixel map to be tinted and used in multiple places
@@ -110,9 +99,6 @@ public class Theme {
     public Theme update(final String name) {
         return update(Gdx.files.internal("themes/" + name + ".theme"));
     }
-
-    //endregion
-
     //region Applying the theme
 
     private Theme update(final FileHandle handle) {
@@ -187,23 +173,17 @@ public class Theme {
     public void glClearBackground() {
         Gdx.gl.glClearColor(background.r, background.g, background.b, background.a);
     }
-
-    //endregion
-
     //region Styling utilities
 
     public void updateStyle(ImageButton.ImageButtonStyle style, int styleIndex) {
         style.imageUp = buttonStyles[styleIndex].imageUp;
         style.imageDown = buttonStyles[styleIndex].imageDown;
     }
-
-    //endregion
-
     //region Disposal
 
     void dispose() {
         cellTexture.dispose();
     }
 
-    //endregion
+    
 }

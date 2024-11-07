@@ -1,4 +1,3 @@
-
 package dev.lonami.klooni.actors;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
@@ -10,13 +9,9 @@ import dev.lonami.klooni.Theme;
 // Small wrapper to use themed image buttons more easily
 public class SoftButton extends ImageButton {
 
-    //region Members
 
     private final int styleIndex;
     public Drawable image;
-
-    //endregion
-
     //region Constructor
 
     public SoftButton(final int styleIndex, final String imageName) {
@@ -25,9 +20,6 @@ public class SoftButton extends ImageButton {
         this.styleIndex = styleIndex;
         updateImage(imageName);
     }
-
-    //endregion
-
     //region Public methods
 
     public void updateImage(final String imageName) {
@@ -48,5 +40,5 @@ public class SoftButton extends ImageButton {
         super.draw(batch, parentAlpha);
     }
 
-    //endregion
+    
 }

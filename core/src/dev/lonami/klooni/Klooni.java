@@ -1,4 +1,3 @@
-
 package dev.lonami.klooni;
 
 import com.badlogic.gdx.Application;
@@ -23,8 +22,6 @@ import java.util.Map;
 
 public class Klooni extends Game {
 
-    //region Members
-
     // ordered list of effects. index 0 will get default if VanishEffectFactory is removed from list
     public final static IEffectFactory[] EFFECTS = {
             new VanishEffectFactory(),
@@ -44,9 +41,6 @@ public class Klooni extends Game {
     public IEffectFactory effect;
     public Skin skin;
 
-    //endregion
-
-    //region Creation
     private Map<String, Sound> effectSounds;
 
     // TODO Possibly implement a 'ShareChallenge'
@@ -55,11 +49,6 @@ public class Klooni extends Game {
         this.shareChallenge = shareChallenge;
     }
 
-    //endregion
-
-    //region Screen
-
-    // Score related
     public static int getMaxScore() {
         return prefs.getInteger("maxScore", 0);
     }
@@ -68,30 +57,18 @@ public class Klooni extends Game {
         prefs.putInteger("maxScore", score).flush();
     }
 
-    //endregion
-
-    //region Disposing
-
     public static int getMaxTimeScore() {
         return prefs.getInteger("maxTimeScore", 0);
     }
-
-    //endregion
-
-    // region Effects
 
     public static void setMaxTimeScore(int maxTimeScore) {
         prefs.putInteger("maxTimeScore", maxTimeScore).flush();
     }
 
-    // Settings related
     public static boolean soundsEnabled() {
         return !prefs.getBoolean("muteSound", false);
     }
 
-    // endregion
-
-    //region Settings
 
     public static boolean toggleSound() {
         final boolean result = soundsEnabled();
@@ -145,7 +122,6 @@ public class Klooni extends Game {
         theme.update(newTheme.getName());
     }
 
-    // Effects related
     public static boolean isEffectBought(IEffectFactory effect) {
         if (effect.getPrice() == 0)
             return true;
@@ -262,6 +238,4 @@ public class Klooni extends Game {
         // Create a new effect, since the one passed through the parameter may dispose later
         effect = newEffect;
     }
-
-    //endregion
 }

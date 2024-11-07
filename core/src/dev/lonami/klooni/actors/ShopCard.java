@@ -1,4 +1,3 @@
-
 package dev.lonami.klooni.actors;
 
 import com.badlogic.gdx.graphics.Color;

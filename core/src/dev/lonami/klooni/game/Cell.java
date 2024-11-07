@@ -1,4 +1,3 @@
-
 package dev.lonami.klooni.game;
 
 import com.badlogic.gdx.graphics.Color;
@@ -15,15 +14,11 @@ import java.io.IOException;
 // Instances will use the cell texture provided by the currently used skin.
 public class Cell implements BinSerializable {
 
-    //region Members
 
     public final Vector2 pos;
     public final float size;
     // Negative index indicates that the cell is empty
     private int colorIndex;
-
-    //endregion
-
     //region Constructor
 
     Cell(float x, float y, float cellSize) {
@@ -32,9 +27,6 @@ public class Cell implements BinSerializable {
 
         colorIndex = -1;
     }
-
-    //endregion
-
     //region Package local methods
 
     // Default texture (don't call overloaded version to avoid overhead)
@@ -62,9 +54,6 @@ public class Cell implements BinSerializable {
         // Always query the color to the theme, because it might have changed
         draw(Klooni.theme.getCellColor(colorIndex), batch, pos.x, pos.y, size);
     }
-
-    //endregion
-
     //region Static methods
 
     public Color getColorCopy() {
@@ -74,9 +63,6 @@ public class Cell implements BinSerializable {
     boolean isEmpty() {
         return colorIndex < 0;
     }
-
-    //endregion
-
     //region Serialization
 
     @Override
@@ -90,5 +76,5 @@ public class Cell implements BinSerializable {
         colorIndex = in.readInt();
     }
 
-    //endregion
+    
 }
