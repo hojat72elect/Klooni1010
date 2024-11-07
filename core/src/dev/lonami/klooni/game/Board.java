@@ -1,20 +1,4 @@
-/*
-    1010! Klooni, a free customizable puzzle game for Android and Desktop
-    Copyright (C) 2017-2019  Lonami Exo @ lonami.dev
 
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
 package dev.lonami.klooni.game;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
@@ -22,14 +6,12 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
-
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-
 import dev.lonami.klooni.interfaces.IEffect;
 import dev.lonami.klooni.interfaces.IEffectFactory;
 import dev.lonami.klooni.serializer.BinSerializable;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
 
 // Represents the on screen board, with all the put cells
 // and functions to determine when it is game over given a PieceHolder
@@ -38,14 +20,12 @@ public class Board implements BinSerializable {
     //region Members
 
     public final int cellCount;
-    public float cellSize;
-    private Cell[][] cells;
-    private final Array<IEffect> effects = new Array<IEffect>(); // Particle effects once they vanish
-
     public final Vector2 pos = new Vector2();
-
+    private final Array<IEffect> effects = new Array<IEffect>(); // Particle effects once they vanish
     // Used to animate cleared cells vanishing
     private final Vector2 lastPutPiecePos = new Vector2();
+    public float cellSize;
+    private Cell[][] cells;
 
     //endregion
 

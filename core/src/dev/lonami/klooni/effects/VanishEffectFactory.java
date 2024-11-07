@@ -1,20 +1,4 @@
-/*
-    1010! Klooni, a free customizable puzzle game for Android and Desktop
-    Copyright (C) 2017-2019  Lonami Exo @ lonami.dev
 
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
 package dev.lonami.klooni.effects;
 
 import com.badlogic.gdx.Gdx;
@@ -23,7 +7,6 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
-
 import dev.lonami.klooni.game.Cell;
 import dev.lonami.klooni.interfaces.IEffect;
 import dev.lonami.klooni.interfaces.IEffectFactory;
@@ -54,14 +37,12 @@ public class VanishEffectFactory implements IEffectFactory {
 
 
     private class VanishEffect implements IEffect {
+        private final static float MINIMUM_SIZE = 0.3f;
         private Cell cell;
-
         private Color vanishColor;
         private float vanishSize;
         private float vanishElapsed;
         private float vanishLifetime;
-
-        private final static float MINIMUM_SIZE = 0.3f;
 
         VanishEffect() {
             vanishElapsed = Float.POSITIVE_INFINITY;
@@ -92,8 +73,10 @@ public class VanishEffectFactory implements IEffectFactory {
             vanishElapsed += Gdx.graphics.getDeltaTime();
 
             // vanishElapsed might be < 0 (delay), so clamp to 0
-            float progress = Math.min(1f,
-                    Math.max(vanishElapsed, 0f) / vanishLifetime);
+            float progress = Math.min(
+                    1f,
+                    Math.max(vanishElapsed, 0f) / vanishLifetime
+            );
 
             // If one were to plot the elasticIn function, they would see that the slope increases
             // a lot towards the end- a linear interpolation between the last size + the desired

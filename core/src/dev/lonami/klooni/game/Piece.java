@@ -1,20 +1,4 @@
-/*
-    1010! Klooni, a free customizable puzzle game for Android and Desktop
-    Copyright (C) 2017-2019  Lonami Exo @ lonami.dev
 
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
 package dev.lonami.klooni.game;
 
 import com.badlogic.gdx.graphics.Color;
@@ -22,12 +6,10 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
-
+import dev.lonami.klooni.Klooni;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-
-import dev.lonami.klooni.Klooni;
 
 // Represents a piece with an arbitrary shape, which
 // can be either rectangles (squares too) or L shaped
@@ -36,11 +18,10 @@ public class Piece {
 
     //region Members
 
-    final Vector2 pos;
     public final int colorIndex;
-    private final int rotation;
-
     public final int cellCols, cellRows;
+    final Vector2 pos;
+    private final int rotation;
     private final boolean[][] shape;
 
     // Default arbitrary value
@@ -151,6 +132,10 @@ public class Piece {
 
     //region Package local methods
 
+    static Piece read(DataInputStream in) throws IOException {
+        return fromIndex(in.readInt(), in.readInt());
+    }
+
     void draw(SpriteBatch batch) {
         final Color c = Klooni.theme.getCellColor(colorIndex);
         for (int i = 0; i < cellRows; ++i)
@@ -182,6 +167,10 @@ public class Piece {
         return area;
     }
 
+    //endregion
+
+    //region Serialization
+
     // Calculates the gravity center of the piece shape
     Vector2 calculateGravityCenter() {
         int filledCount = 0;
@@ -192,25 +181,18 @@ public class Piece {
                     filledCount++;
                     result.add(
                             pos.x + j * cellSize - cellSize * 0.5f,
-                            pos.y + i * cellSize - cellSize * 0.5f);
+                            pos.y + i * cellSize - cellSize * 0.5f
+                    );
                 }
             }
         }
         return result.scl(1f / filledCount);
     }
 
-    //endregion
-
-    //region Serialization
-
     void write(DataOutputStream out) throws IOException {
         // colorIndex, rotation
         out.writeInt(colorIndex);
         out.writeInt(rotation);
-    }
-
-    static Piece read(DataInputStream in) throws IOException {
-        return fromIndex(in.readInt(), in.readInt());
     }
 
     //endregion

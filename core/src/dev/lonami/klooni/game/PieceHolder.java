@@ -1,20 +1,4 @@
-/*
-    1010! Klooni, a free customizable puzzle game for Android and Desktop
-    Copyright (C) 2017-2019  Lonami Exo @ lonami.dev
 
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
 package dev.lonami.klooni.game;
 
 import com.badlogic.gdx.Gdx;
@@ -25,13 +9,11 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
-
+import dev.lonami.klooni.Klooni;
+import dev.lonami.klooni.serializer.BinSerializable;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-
-import dev.lonami.klooni.Klooni;
-import dev.lonami.klooni.serializer.BinSerializable;
 
 // A holder of pieces that can be drawn on screen.
 // Pieces can be picked up from it and dropped on a board.
@@ -39,41 +21,35 @@ public class PieceHolder implements BinSerializable {
 
     //region Members
 
+    private static final float DRAG_SPEED = 0.5f; // Interpolation value ((pos -> new) / frame)
     final Rectangle area;
     private final Piece[] pieces;
-
     private final Sound pieceDropSound;
     private final Sound invalidPieceDropSound;
     private final Sound takePiecesSound;
-
     // Count of pieces to be shown
     private final int count;
-
-    // Currently held piece index (picked by the user)
-    private int heldPiece;
-    public boolean enabled;
-
     // Needed after a piece is dropped, so it can go back
     private final Rectangle[] originalPositions;
-
     // The size the cells will adopt once picked
     private final float pickedCellSize;
-
     // Every piece holder belongs to a specific board
     private final Board board;
+    public boolean enabled;
 
     //endregion
 
     //region Static members
-
-    private static final float DRAG_SPEED = 0.5f; // Interpolation value ((pos -> new) / frame)
+    // Currently held piece index (picked by the user)
+    private int heldPiece;
 
     //endregion
 
     //region Constructor
 
     public PieceHolder(final GameLayout layout, final Board board,
-                       final int pieceCount, final float pickedCellSize) {
+                       final int pieceCount, final float pickedCellSize
+    ) {
         this.board = board;
         enabled = true;
         count = pieceCount;
@@ -134,7 +110,8 @@ public class PieceHolder implements BinSerializable {
             piece.pos.set(area.x + i * perPieceWidth, area.y);
             piece.cellSize = Math.min(Math.min(
                     perPieceWidth / piece.cellCols,
-                    area.height / piece.cellRows), pickedCellSize);
+                    area.height / piece.cellRows
+            ), pickedCellSize);
 
             // Center the piece on the X and Y axes. For this we see how
             // much up we can go, this is, (area.height - piece.height) / 2
@@ -144,7 +121,8 @@ public class PieceHolder implements BinSerializable {
 
             originalPositions[i] = new Rectangle(
                     piece.pos.x, piece.pos.y,
-                    piece.cellSize, piece.cellSize);
+                    piece.cellSize, piece.cellSize
+            );
 
             // Now that we have the original positions, reset the size so it animates and grows
             piece.cellSize = 0f;
@@ -159,7 +137,8 @@ public class PieceHolder implements BinSerializable {
     public boolean pickPiece() {
         Vector2 mouse = new Vector2(
                 Gdx.input.getX(),
-                Gdx.graphics.getHeight() - Gdx.input.getY()); // Y axis is inverted
+                Gdx.graphics.getHeight() - Gdx.input.getY()
+        ); // Y axis is inverted
 
         final float perPieceWidth = area.width / count;
         for (int i = 0; i < count; ++i) {
@@ -238,7 +217,8 @@ public class PieceHolder implements BinSerializable {
 
             Vector2 mouse = new Vector2(
                     Gdx.input.getX(),
-                    Gdx.graphics.getHeight() - Gdx.input.getY()); // Y axis is inverted
+                    Gdx.graphics.getHeight() - Gdx.input.getY()
+            ); // Y axis is inverted
 
             if (Klooni.onDesktop) { //FIXME(oliver): This is a bad assumption to make. There are desktops with touch input and non-desktops with mouse input.
                 // Center the piece to the mouse

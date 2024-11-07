@@ -1,27 +1,10 @@
-/*
-    1010! Klooni, a free customizable puzzle game for Android and Desktop
-    Copyright (C) 2017-2019  Lonami Exo @ lonami.dev
 
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
 package dev.lonami.klooni.game;
 
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-
 import dev.lonami.klooni.actors.Band;
 import dev.lonami.klooni.actors.ShopCard;
 
@@ -78,19 +61,23 @@ public class GameLayout {
         float cupSize = Math.min(scoreHeight, scorer.cupTexture.getHeight());
         final Rectangle area = new Rectangle(
                 marginWidth, pieceHolderHeight + boardHeight,
-                availableWidth, scoreHeight);
+                availableWidth, scoreHeight
+        );
 
         scorer.cupArea.set(
                 area.x + area.width * 0.5f - cupSize * 0.5f, area.y,
-                cupSize, cupSize);
+                cupSize, cupSize
+        );
 
         scorer.currentScoreLabel.setBounds(
                 area.x, area.y,
-                area.width * 0.5f - cupSize * 0.5f, area.height);
+                area.width * 0.5f - cupSize * 0.5f, area.height
+        );
 
         scorer.highScoreLabel.setBounds(
                 area.x + area.width * 0.5f + cupSize * 0.5f, area.y,
-                area.width * 0.5f - cupSize * 0.5f, area.height);
+                area.width * 0.5f - cupSize * 0.5f, area.height
+        );
     }
 
     // Special case, we want to position the label on top of the cup
@@ -112,13 +99,15 @@ public class GameLayout {
     void update(PieceHolder holder) {
         holder.area.set(
                 marginWidth, 0f,
-                availableWidth, pieceHolderHeight);
+                availableWidth, pieceHolderHeight
+        );
     }
 
     public void update(Band band) {
         final Rectangle area = new Rectangle(
                 0, pieceHolderHeight + boardHeight,
-                screenWidth, scoreHeight);
+                screenWidth, scoreHeight
+        );
 
         band.setBounds(area.x, area.y, area.width, area.height);
         // Let the band have the following shape:
@@ -139,11 +128,13 @@ public class GameLayout {
         // X offset from the cells (5 cells = shopCardHeight)
         card.nameBounds.set(
                 shopCardHeight, card.cellSize,
-                availableWidth - shopCardHeight, shopCardHeight);
+                availableWidth - shopCardHeight, shopCardHeight
+        );
 
         card.priceBounds.set(
                 shopCardHeight, -card.cellSize,
-                availableWidth - shopCardHeight, shopCardHeight);
+                availableWidth - shopCardHeight, shopCardHeight
+        );
     }
 
     //endregion
