@@ -9,10 +9,10 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import dev.lonami.klooni.Klooni;
-import dev.lonami.klooni.serializer.BinSerializable;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import dev.lonami.klooni.serializer.BinSerializable;
 
 // A holder of pieces that can be drawn on screen.
 // Pieces can be picked up from it and dropped on a board.

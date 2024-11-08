@@ -17,11 +17,11 @@ import dev.lonami.klooni.game.Piece;
 import dev.lonami.klooni.game.PieceHolder;
 import dev.lonami.klooni.game.Scorer;
 import dev.lonami.klooni.game.TimeScorer;
-import dev.lonami.klooni.serializer.BinSerializable;
 import dev.lonami.klooni.serializer.BinSerializer;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import dev.lonami.klooni.serializer.BinSerializable;
 
 // Main game screen. Here the board, piece holder and score are shown
 class GameScreen implements Screen, InputProcessor, BinSerializable {

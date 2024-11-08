@@ -15,13 +15,9 @@ import dev.lonami.klooni.actors.SoftButton;
 // Main menu screen, presenting some options (play, customize…)
 public class MainMenuScreen extends InputListener implements Screen {
 
-
-    // As the examples show on the LibGdx wiki
     private static final float minDelta = 1 / 30f;
     private final Klooni game;
-    //region Static members
     private final Stage stage;
-    //region Constructor
 
     public MainMenuScreen(Klooni game) {
         this.game = game;
@@ -45,7 +41,6 @@ public class MainMenuScreen extends InputListener implements Screen {
 
         table.row();
 
-        // Star button (on GitHub)
         final SoftButton starButton = new SoftButton(1, "star_texture");
         starButton.addListener(new ChangeListener() {
             @Override
@@ -71,13 +66,12 @@ public class MainMenuScreen extends InputListener implements Screen {
         paletteButton.addListener(new ChangeListener() {
             public void changed(ChangeEvent event, Actor actor) {
                 // Don't dispose because then it needs to take us to the previous screen
-                MainMenuScreen.this.game.transitionTo(new CustomizeScreen(
-                        MainMenuScreen.this.game, MainMenuScreen.this.game.getScreen()), false);
+                MainMenuScreen.this.game.transitionTo(new CustomizeScreen(MainMenuScreen.this.game, MainMenuScreen.this.game.getScreen()), false);
             }
         });
         table.add(paletteButton).space(16);
     }
-    
+
 
     @Override
     public void show() {
@@ -118,6 +112,4 @@ public class MainMenuScreen extends InputListener implements Screen {
     @Override
     public void hide() {
     }
-
-    
 }

@@ -41,11 +41,9 @@ public class SkinLoader {
 
         // Nine patches
         final int border = (int) (28 * bestMultiplier);
-        skin.add("button_up", new NinePatch(new Texture(
-                Gdx.files.internal(folder + "button_up.png")), border, border, border, border));
+        skin.add("button_up", new NinePatch(new Texture(Gdx.files.internal(folder + "button_up.png")), border, border, border, border));
 
-        skin.add("button_down", new NinePatch(new Texture(
-                Gdx.files.internal(folder + "button_down.png")), border, border, border, border));
+        skin.add("button_down", new NinePatch(new Texture(Gdx.files.internal(folder + "button_down.png")), border, border, border, border));
 
         for (String id : ids) {
             skin.add(id + "_texture", new Texture(Gdx.files.internal(folder + id + ".png")));

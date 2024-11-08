@@ -7,10 +7,10 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import dev.lonami.klooni.interfaces.IEffect;
 import dev.lonami.klooni.interfaces.IEffectFactory;
-import dev.lonami.klooni.serializer.BinSerializable;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import dev.lonami.klooni.serializer.BinSerializable;
 
 // Represents the on screen board, with all the put cells
 // and functions to determine when it is game over given a PieceHolder

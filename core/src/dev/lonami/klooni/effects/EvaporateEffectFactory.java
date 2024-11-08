@@ -29,13 +29,12 @@ public class EvaporateEffectFactory implements IEffectFactory {
 
     @Override
     public IEffect create(Cell deadCell, Vector2 culprit) {
-        IEffect effect = new EvaporateEffect();
+        IEffect effect = new dev.lonami.klooni.effects.EvaporateEffectFactory.EvaporateEffect();
         effect.setInfo(deadCell, culprit);
         return effect;
     }
 
-
-    private class EvaporateEffect implements IEffect {
+    private static class EvaporateEffect implements IEffect {
         private static final float UP_SPEED = 100.0f;
         private static final float LIFETIME = 3.0f;
         private static final float INV_LIFETIME = 1.0f / 3.0f;

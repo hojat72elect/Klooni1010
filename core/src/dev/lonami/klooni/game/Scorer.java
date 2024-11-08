@@ -1,10 +1,10 @@
 package dev.lonami.klooni.game;
 
 import dev.lonami.klooni.Klooni;
-import dev.lonami.klooni.serializer.BinSerializable;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import dev.lonami.klooni.serializer.BinSerializable;
 
 // Used to keep track of the current and maximum
 // score, and to also display it on the screen.
@@ -52,5 +52,4 @@ public class Scorer extends BaseScorer implements BinSerializable {
         highScore = inputStream.readInt();
     }
 
-    
 }

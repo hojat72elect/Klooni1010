@@ -5,7 +5,6 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.Arrays;
 
 public class BinSerializer {
 
@@ -18,42 +17,29 @@ public class BinSerializer {
 
     public static void serialize(final BinSerializable serializable, final OutputStream output)
             throws IOException {
-        DataOutputStream out = new DataOutputStream(output);
-        try {
-            out.write(HEADER);
-            out.writeInt(VERSION);
-            serializable.write(out);
-        } finally {
-            try {
-                out.close();
-            } catch (IOException ignored) {
-            }
+        try (DataOutputStream outputStream = new DataOutputStream(output)) {
+            outputStream.write(HEADER);
+            outputStream.writeInt(VERSION);
+            serializable.write(outputStream);
         }
     }
 
     public static void deserialize(final BinSerializable serializable, final InputStream input)
             throws IOException {
-        DataInputStream in = new DataInputStream(input);
-        try {
+        try (DataInputStream inputStream = new DataInputStream(input)) {
             // Read the HEADER and the VERSION (checks)
             byte[] savedBuffer = new byte[HEADER.length];
-            in.readFully(savedBuffer);
-            if (!Arrays.equals(savedBuffer, HEADER))
-                throw new IOException("Invalid saved header found.");
+            inputStream.readFully(savedBuffer);
+            if (!java.util.Arrays.equals(savedBuffer, HEADER))
+                throw new java.io.IOException("Invalid saved header found.");
 
-            int savedVersion = in.readInt();
+            int savedVersion = inputStream.readInt();
             if (savedVersion != VERSION) {
-                throw new IOException(
-                        "Invalid saved version found. Should be " + VERSION + ", not " + savedVersion);
+                throw new java.io.IOException("Invalid saved version found. Should be " + VERSION + ", not " + savedVersion);
             }
 
             // Read the saved data if the checks passed
-            serializable.read(in);
-        } finally {
-            try {
-                in.close();
-            } catch (IOException ignored) {
-            }
+            serializable.read(inputStream);
         }
     }
 }

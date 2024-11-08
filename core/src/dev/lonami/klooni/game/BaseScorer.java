@@ -14,7 +14,6 @@ import dev.lonami.klooni.serializer.BinSerializable;
 
 public abstract class BaseScorer implements BinSerializable {
 
-
     final Label currentScoreLabel;
     final Label highScoreLabel;
     final Texture cupTexture;
@@ -23,7 +22,6 @@ public abstract class BaseScorer implements BinSerializable {
     int currentScore;
     // To interpolate between shown score -> real score
     private float shownScore;
-    //region Constructor
 
     // The board size is required when calculating the score
     BaseScorer(final Klooni game, GameLayout layout, int highScore) {
@@ -41,7 +39,6 @@ public abstract class BaseScorer implements BinSerializable {
 
         layout.update(this);
     }
-    //region Private methods
 
     // The original game seems to work as follows:
     // If < 1 were cleared, score = 0
@@ -52,7 +49,6 @@ public abstract class BaseScorer implements BinSerializable {
         if (stripsCleared == 1) return boardSize;
         else return boardSize * stripsCleared + calculateClearScore(stripsCleared - 1, boardSize);
     }
-    //region Public methods
 
     // Adds the score a given piece would give
     public void addPieceScore(final int areaPut) {
@@ -104,6 +100,4 @@ public abstract class BaseScorer implements BinSerializable {
         highScoreLabel.setColor(Klooni.theme.highScore);
         highScoreLabel.draw(batch, 1f);
     }
-
-    
 }

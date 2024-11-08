@@ -5,10 +5,10 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 import dev.lonami.klooni.Klooni;
-import dev.lonami.klooni.serializer.BinSerializable;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import dev.lonami.klooni.serializer.BinSerializable;
 
 // Represents a single cell, with a position, size and color.
 // Instances will use the cell texture provided by the currently used skin.
@@ -75,6 +75,4 @@ public class Cell implements BinSerializable {
     public void read(DataInputStream inputStream) throws IOException {
         colorIndex = inputStream.readInt();
     }
-
-    
 }

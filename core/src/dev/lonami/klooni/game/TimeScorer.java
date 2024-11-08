@@ -6,13 +6,12 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.TimeUtils;
 import dev.lonami.klooni.Klooni;
-import dev.lonami.klooni.serializer.BinSerializable;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import dev.lonami.klooni.serializer.BinSerializable;
 
 public class TimeScorer extends BaseScorer implements BinSerializable {
-
 
     private static final long START_TIME = 30 * 1000000000L;
     // 2 seconds every 10 points: (2/10)*10^9 to get the nanoseconds
@@ -46,7 +45,6 @@ public class TimeScorer extends BaseScorer implements BinSerializable {
 
         pausedTimeLeft = -1;
     }
-    //region Private methods
 
     private int nanosToSeconds(long nano) {
         return MathUtils.ceil((float) (nano * NANOS_TO_SECONDS));
@@ -59,7 +57,6 @@ public class TimeScorer extends BaseScorer implements BinSerializable {
     private int getTimeLeft() {
         return Math.max(nanosToSeconds(deadTime - TimeUtils.nanoTime()), 0);
     }
-    //region Public methods
 
     @Override
     public int addBoardScore(int stripsCleared, int boardSize) {
@@ -120,7 +117,6 @@ public class TimeScorer extends BaseScorer implements BinSerializable {
         timeLeftLabel.setColor(Klooni.theme.currentScore);
         timeLeftLabel.draw(batch, 1f);
     }
-    //region Serialization
 
     @Override
     public void write(DataOutputStream outputStream) throws IOException {
