@@ -5,6 +5,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Arrays;
 
 public class BinSerializer {
 
@@ -30,12 +31,12 @@ public class BinSerializer {
             // Read the HEADER and the VERSION (checks)
             byte[] savedBuffer = new byte[HEADER.length];
             inputStream.readFully(savedBuffer);
-            if (!java.util.Arrays.equals(savedBuffer, HEADER))
-                throw new java.io.IOException("Invalid saved header found.");
+            if (!Arrays.equals(savedBuffer, HEADER))
+                throw new IOException("Invalid saved header found.");
 
             int savedVersion = inputStream.readInt();
             if (savedVersion != VERSION) {
-                throw new java.io.IOException("Invalid saved version found. Should be " + VERSION + ", not " + savedVersion);
+                throw new IOException("Invalid saved version found. Should be " + VERSION + ", not " + savedVersion);
             }
 
             // Read the saved data if the checks passed
