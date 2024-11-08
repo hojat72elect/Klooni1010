@@ -15,7 +15,7 @@ public class BonusParticleHandler {
     public BonusParticleHandler(final Klooni game) {
         labelStyle = new Label.LabelStyle();
         labelStyle.font = game.skin.getFont("font_bonus");
-        particles = new Array<BonusParticle>();
+        particles = new Array<>();
     }
 
     public void addBonus(final Vector2 pos, final int score) {
