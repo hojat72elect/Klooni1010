@@ -11,15 +11,18 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
 
-// Represents a Theme for the current game.
-// These are loaded from external files, so more
-// can be easily added
+
+/**
+ * Represents a Theme for the current game.
+ * These are loaded from external files, so more
+ * can be easily added
+ */
 public class Theme {
 
-
-    // Used to determine the best foreground color (black or white) given a background color
-    // Formula took from http://alienryderflex.com/hsp.html
-    // Not used yet, but may be useful
+    /*
+     *  This static field is used to determine the best foreground color (black or white) given a background color Formula took
+     * from http://alienryderflex.com/hsp.html Not used yet, but may be useful.
+     */
     private final static double BRIGHTNESS_CUTOFF = 0.5;
     public static Skin skin;
     // Save the button styles so the changes here get reflected
@@ -36,9 +39,7 @@ public class Theme {
     private String name;
     private int price;
     private Color emptyCell;
-    //region Constructor
     private Color[] cells;
-    //region Static methods
 
     private Theme() {
         buttonStyles = new ImageButton.ImageButtonStyle[4];
@@ -83,7 +84,6 @@ public class Theme {
 
         return brightness < BRIGHTNESS_CUTOFF;
     }
-    //region Theme updating
 
     // A 1x1 blank pixel map to be tinted and used in multiple places
     public static Texture getBlankTexture() {
@@ -99,7 +99,6 @@ public class Theme {
     public Theme update(final String name) {
         return update(Gdx.files.internal("themes/" + name + ".theme"));
     }
-    //region Applying the theme
 
     private Theme update(final FileHandle handle) {
         if (skin == null) {
@@ -173,17 +172,13 @@ public class Theme {
     public void glClearBackground() {
         Gdx.gl.glClearColor(background.r, background.g, background.b, background.a);
     }
-    //region Styling utilities
 
     public void updateStyle(ImageButton.ImageButtonStyle style, int styleIndex) {
         style.imageUp = buttonStyles[styleIndex].imageUp;
         style.imageDown = buttonStyles[styleIndex].imageDown;
     }
-    //region Disposal
 
     void dispose() {
         cellTexture.dispose();
     }
-
-    
 }

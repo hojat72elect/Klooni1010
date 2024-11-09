@@ -10,7 +10,9 @@ import dev.lonami.klooni.game.GameLayout;
 import dev.lonami.klooni.game.Piece;
 import dev.lonami.klooni.interfaces.IEffectFactory;
 
-// Card-like actor used to display information about a given theme
+/**
+ * Card-like actor used to display information about a given theme.
+ */
 public class EffectCard extends ShopCard {
 
     private final IEffectFactory effect;
@@ -124,5 +126,4 @@ public class EffectCard extends ShopCard {
         }
     }
 
-    
 }
